@@ -13,21 +13,13 @@ checkStatus();
 function onFormInput(event) {
   data.email = inputEl.value;
   data.message = messageEl.value;
-  //   const target = event.target;
-
-  //   if (target.name === 'email') {
-  //     data.email = target.value;
-  //   } else if (target.name === 'message') {
-  //     data.message = target.value;
-  //   }
-
   localStorage.setItem(KEY, JSON.stringify(data));
 }
 
 function onFormSubmit(event) {
   event.preventDefault();
   formEl.reset();
-  console.log(data);
+  console.log(JSON.parse(localStorage.getItem(KEY)));
   localStorage.removeItem(KEY);
   formEl.removeEventListener('input', throttle(onFormInput, 500));
 }
